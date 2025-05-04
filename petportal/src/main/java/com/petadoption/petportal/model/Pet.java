@@ -12,6 +12,9 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Id
+    //@Column(nullable = true) // or @Column(nullable = false) if you expect a value
+    private Integer age;
+
     
     private Long id;
     private String name;
