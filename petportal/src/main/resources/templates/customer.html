@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer - Adopt a Pet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Available Pets for Adoption</h2>
+        <div class="row">
+            <!-- Loop through available pets -->
+            <div class="col-md-4" th:each="pet : ${pets}">
+                <div class="card">
+                    
+                    <img class="card-img-top" src="https://via.placeholder.com/150" alt="Pet Image">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${pet.name}">Pet Name</h5>
+                        <p class="card-text" th:text="${pet.description}">Description of the pet</p>
+                        <a href="/adopt/{{pet.id}}" class="btn btn-primary">Adopt Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
