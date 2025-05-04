@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file if you have one -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- Axios for API requests -->
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Pet Adoption Portal</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Available Pets</a></li>
+                <li><a href="#">Adopt a Pet</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Find Your New Best Friend!</h2>
+                <p>Adopt a pet today and make a difference in their life and yours.</p>
+                <a href="#" class="cta-btn">Browse Available Pets</a>
+            </div>
+        </section>
+
+        <section class="pets-section">
+            <h2>Available Pets for Adoption</h2>
+            <div class="pets-list" id="pets-list">
+                <!-- Dynamic list of pets will be loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Pet Adoption Portal | All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Example JavaScript to fetch and display available pets
+        document.addEventListener('DOMContentLoaded', function () {
+            axios.get('http://localhost:8080/pets')  // Make sure this matches your API URL
+                .then(function (response) {
+                    const petsList = document.getElementById('pets-list');
+                    response.data.forEach(function (pet) {
+                        const petElement = document.createElement('div');
+                        petElement.classList.add('pet-item');
+                        petElement.innerHTML = `
+                            <h3>${pet.name}</h3>
+                            <p>${pet.description}</p>
+                            <p>Status: ${pet.adopted ? 'Adopted' : 'Available'}</p>
+                        `;
+                        petsList.appendChild(petElement);
+                    });
+                })
+                .catch(function (error) {
+                    console.error('Error fetching pets:', error);
+                });
+        });
+    </script>
+</body>
+
+</html>
