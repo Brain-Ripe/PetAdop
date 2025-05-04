@@ -3,7 +3,6 @@ package com.petadoption.petportal.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -52,17 +51,5 @@ public class SecurityConfig {
             }
             throw new UsernameNotFoundException("User not found");
         };
-    }
-
-    @Bean
-    public AuthenticationManagerBuilder authenticationManagerBuilder(HttpSecurity http) throws Exception {
-        AuthenticationManagerBuilder authenticationManagerBuilder = 
-            http.getSharedObject(AuthenticationManagerBuilder.class);
-        
-        authenticationManagerBuilder
-            .userDetailsService(userDetailsService())
-            .passwordEncoder(passwordEncoder());
-        
-        return authenticationManagerBuilder;
     }
 }
