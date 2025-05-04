@@ -30,4 +30,14 @@ public class PetService {
     public void deletePet(Long id) {
         petRepository.deleteById(id);  // Remove pet by id from the DB
     }
+
+    public Pet getPetById(Long id) {
+        return petRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Pet not found with ID: " + id));
+    }
+    
+    public void deletePetById(Long id) {
+        petRepository.deleteById(id);
+    }
+    
 }

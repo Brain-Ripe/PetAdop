@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pet Details</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div th:replace="fragments/navbar :: *"></div>
+<h2>Pet Details</h2>
+<p><strong>Name:</strong> <span th:text="${pet.name}"></span></p>
+<p><strong>Type:</strong> <span th:text="${pet.type}"></span></p>
+<p><strong>Description:</strong> <span th:text="${pet.description}"></span></p>
+<a th:href="@{/pets}">Back to List</a>
+</body>
+</html>

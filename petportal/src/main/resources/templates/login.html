@@ -1,26 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Login - PetAdop</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Login</h1>
-        <form id="login-form">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-
+    <h1>Login</h1>
+    <form th:action="@{/login}" method="post">
+        <div>
+            <label>Username:</label>
+            <input type="text" name="username" />
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password" />
+        </div>
+        <div>
             <button type="submit">Login</button>
-        </form>
-        <p>Don't have an account? <a href="signup.html">Sign Up here</a></p>
-    </div>
-
-    <script src="app.js"></script>
+        </div>
+    </form>
 </body>
 </html>

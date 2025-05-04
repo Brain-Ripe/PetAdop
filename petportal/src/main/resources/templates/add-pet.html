@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Pet</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div th:replace="fragments/navbar :: *"></div>
+<h2>Add New Pet</h2>
+<form th:action="@{/pets/add}" method="post" th:object="${pet}">
+    <input type="text" th:field="*{name}" placeholder="Pet Name" required /><br/>
+    <input type="text" th:field="*{type}" placeholder="Pet Type (e.g., Dog, Cat)" required /><br/>
+    <textarea th:field="*{description}" placeholder="Pet Description"></textarea><br/>
+    <button type="submit">Add Pet</button>
+</form>
+<a th:href="@{/pets}">Cancel</a>
+</body>
+</html>

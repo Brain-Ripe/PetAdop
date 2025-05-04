@@ -23,6 +23,17 @@ dependencies {
 
     implementation 'javax.persistence:javax.persistence-api:2.2'
 
+    // Spring Boot Web and Thymeleaf (already present probably)
+implementation 'org.springframework.boot:spring-boot-starter-web'
+implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+// ✅ Spring Security dependencies
+implementation 'org.springframework.boot:spring-boot-starter-security'
+
+// Optional: For encoding passwords
+implementation 'org.springframework.security:spring-security-crypto'
+
+
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'

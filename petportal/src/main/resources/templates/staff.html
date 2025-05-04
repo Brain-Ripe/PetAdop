@@ -1,39 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff - Manage Pets</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <title>Staff Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Manage Pets for Adoption</h2>
-        
-        <h3>Add a New Pet</h3>
-        <form action="/addPet" method="POST">
-            <div class="mb-3">
-                <label for="name" class="form-label">Pet Name</label>
-                <input type="text" id="name" name="name" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Pet Description</label>
-                <textarea id="description" name="description" class="form-control" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Add Pet</button>
-        </form>
-
-        <h3 class="mt-5">Current Pets for Adoption</h3>
-        <ul class="list-group">
-            <li class="list-group-item" th:each="pet : ${pets}">
-                <div>
-                    <span th:text="${pet.name}">Pet Name</span> 
-                    <a href="/removePet/{{pet.id}}" class="btn btn-danger btn-sm float-end">Remove</a>
-                </div>
-            </li>
-        </ul>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <div th:replace="fragments/navbar :: *"></div>
+<h1>Welcome Staff</h1>
+<nav>
+    <a th:href="@{/pets}">Manage Pets</a> |
+    <a th:href="@{/pets/add}">Add Pet</a> |
+    <a th:href="@{/logout}">Logout</a>
+</nav>
 </body>
 </html>

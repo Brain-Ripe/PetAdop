@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Adopt a Pet</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div th:replace="fragments/navbar :: *"></div>
+<h2>Available Pets</h2>
+<table>
+    <thead>
+        <tr><th>Name</th><th>Type</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+        <tr th:each="pet : ${pets}">
+            <td th:text="${pet.name}"></td>
+            <td th:text="${pet.type}"></td>
+            <td>
+                <a th:href="@{'/pets/' + ${pet.id}}">View</a> |
+                <a th:href="@{'/pets/delete/' + ${pet.id}}">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
